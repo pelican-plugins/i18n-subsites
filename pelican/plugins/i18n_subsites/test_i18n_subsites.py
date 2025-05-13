@@ -76,6 +76,11 @@ class TestSitesRelpath(unittest.TestCase):
 class TestRegistration(unittest.TestCase):
     '''Test plugin registration'''
 
+    def tearDown(self):
+        '''Remove fake signal'''
+        if 'tmp_sig' in i18ns._SIGNAL_HANDLERS_DB:
+            del i18ns._SIGNAL_HANDLERS_DB['tmp_sig']
+
     def test_return_on_missing_signal(self):
         '''Test return on missing required signal'''
         i18ns._SIGNAL_HANDLERS_DB['tmp_sig'] = None
