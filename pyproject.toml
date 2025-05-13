@@ -37,7 +37,8 @@ Funding = "https://donate.getpelican.com/"
 markdown = ["markdown>=3.4"]
 
 [dependency-groups]
-lint = [
+dev = [
+    "pdm>=2.20.1",
     "invoke>=2.2",
     "ruff>=0.6.7,<0.7.0",
 ]
