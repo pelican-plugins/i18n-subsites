@@ -2,9 +2,11 @@ from inspect import cleandoc
 import logging
 import os
 from pathlib import Path
-from shutil import which
+from shutil import rmtree, which
 
 from invoke import task
+
+from pelican import main as pelican_main
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +33,27 @@ def tests(c, deprecations=False):
     """Run the test suite, optionally with `--deprecations`."""
     deprecations_flag = "" if deprecations else "-W ignore::DeprecationWarning"
     c.run(f"{CMD_PREFIX}pytest {deprecations_flag}", pty=PTY)
+
+
+@task
+def update_test_data(c):
+    """Run pelican to generate test data."""
+    test_data_path = PKG_PATH / "test_data"
+    test_data_output_path = test_data_path / "output"
+    # Clean output directory
+    if test_data_output_path.is_dir():
+        rmtree(test_data_output_path)
+    test_data_output_path.mkdir()
+    # Run pelican
+    pelican_main(
+        [
+            "-o",
+            str(test_data_output_path),
+            "-s",
+            str(test_data_path / "pelicanconf.py"),
+            str(test_data_path / "content"),
+        ]
+    )
 
 
 @task
