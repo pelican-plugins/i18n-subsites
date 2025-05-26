@@ -1,0 +1,28 @@
+{
+  "template": "https://github.com/getpelican/cookiecutter-pelican-plugin",
+  "commit": "2d945c5bb95e42af6174eb9d092a565ee9fb6fa3",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "plugin_name": "i18n Subsites",
+      "repo_name": "i18n-subsites",
+      "package_name": "i18n_subsites",
+      "distribution_name": "pelican-i18n-subsites",
+      "version": "0.0.0",
+      "description": "Pelican plugin that creates internationalized sub-sites for the default site",
+      "authors": "{name = \"Jane Smith\", email = \"jane@example.com\"}, {name = \"Jack Jones\", email = \"jack@example.com\"}",
+      "keywords": "\"pelican\", \"plugin\"",
+      "readme": "README.md",
+      "contributing": "CONTRIBUTING.md",
+      "license": "GNU Affero General Public License v3|AGPL-3.0",
+      "repo_url": "https://github.com/pelican-plugins/i18n-subsites",
+      "dev_status": "5 - Production/Stable",
+      "tests_exist": true,
+      "python_version": "~=3.9",
+      "pelican_version": ">=4.5",
+      "_template": "https://github.com/getpelican/cookiecutter-pelican-plugin",
+      "_commit": "2d945c5bb95e42af6174eb9d092a565ee9fb6fa3"
+    }
+  },
+  "directory": null
+}
