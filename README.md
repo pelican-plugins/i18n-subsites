@@ -1,4 +1,4 @@
-I18n Subsites: A Plugin for Pelican
+I18N Subsites: A Plugin for Pelican
 ====================================================
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/pelican-plugins/i18n-subsites/main.yml?branch=main)](https://github.com/pelican-plugins/i18n-subsites/actions)
@@ -6,7 +6,7 @@ I18n Subsites: A Plugin for Pelican
 [![Downloads](https://img.shields.io/pypi/dm/pelican-i18n-subsites)](https://pypi.org/project/pelican-i18n-subsites/)
 ![License](https://img.shields.io/pypi/l/pelican-i18n-subsites?color=blue)
 
-Namespace plugin version of the i18n_subsites plugin for Pelican
+Pelican plugin that creates internationalized sub-sites for the default site
 
 Installation
 ------------
@@ -30,7 +30,7 @@ This plugin is designed for Pelican 3.5 and later.
 
     - translations that will appear as native in a different (sub-)site will be removed
     - untranslated articles will be transformed to drafts if `I18N_UNTRANSLATED_ARTICLES` is `'hide'` (default), removed if `'remove'` or kept as they are if `'keep'`.
-    - untranslated pages will be transformed into hidden pages if `I18N_UNTRANSLATED_PAGES` is `'hide'` (default), removed if `'remove'` or kept as they are if `'keep'`.\'\'
+    - untranslated pages will be transformed into hidden pages if `I18N_UNTRANSLATED_PAGES` is `'hide'` (default), removed if `'remove'` or kept as they are if `'keep'`.
     - additional content manipulation similar to articles and pages can be specified for custom generators in the `I18N_GENERATOR_INFO` setting.
 
 2.  For each language specified in the `I18N_SUBSITES` dictionary the settings overrides are applied to the settings from the main site and a new sub-site is generated in the same way as with the main site until content is ready to be written.
@@ -39,11 +39,9 @@ This plugin is designed for Pelican 3.5 and later.
 
 ### Setting it up
 
-For each extra used language code, a language-specific settings overrides dictionary must be given (but can be empty) in the `I18N_SUBSITES` dictionary
+For each extra used language code, a language-specific settings overrides dictionary must be given (but can be empty) in the `I18N_SUBSITES` dictionary:
 
 ``` python
-PLUGINS = ['i18n_subsites', ...]
-
 # mapping: language_code -> settings_overrides_dict
 I18N_SUBSITES = {
     'cz': {
@@ -52,7 +50,7 @@ I18N_SUBSITES = {
 }
 ```
 
-You must also have the following in your pelican configuration
+You must also have the following in your Pelican configuration:
 
 ``` python
 JINJA_ENVIRONMENT = {
@@ -88,7 +86,7 @@ The settings overrides may contain arbitrary settings, however, there are some t
 
 Most importantly, this plugin can use localized templates for each sub-site. There are two approaches to having the templates localized:
 
-- You can set a different `THEME` override for each language in `I18N_SUBSITES`, e.g. by making a copy of a theme `my_theme` to `my_theme_lang` and then editing the templates in the new localized theme. This approach means you don\'t have to deal with gettext `*.po` files, but it is harder to maintain over time.
+- You can set a different `THEME` override for each language in `I18N_SUBSITES`, e.g. by making a copy of a theme `my_theme` to `my_theme_lang` and then editing the templates in the new localized theme. This approach means you don't have to deal with gettext `*.po` files, but it is harder to maintain over time.
 - You use only one theme and localize the templates using the [jinja2.ext.i18n Jinja2 extension](http://jinja.pocoo.org/docs/templates/#i18n). For a kickstart read this [guide](docs/localizing_using_jinja2.md).
 
 ##### Additional context variables
@@ -115,7 +113,7 @@ It may be convenient to add language buttons to your theme in addition to the tr
 
 :   A function that returns a relative path from the first (sub-)site to the second (sub-)site where the (sub-)sites are identified by the language codes given as two arguments.
 
-If you don\'t like the default ordering of the ordered dictionaries, use a Jinja2 filter to alter the ordering.
+If you don't like the default ordering of the ordered dictionaries, use a Jinja2 filter to alter the ordering.
 
 All the siteurls above are always absolute even in the case of `RELATIVE_URLS == True` (it would be to complicated to replicate the Pelican internals for local siteurls), so you may rather use something like `{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang }}` to link to the main site.
 
