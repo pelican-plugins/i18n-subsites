@@ -1,6 +1,6 @@
 [project]
 name = "pelican-i18n-subsites"
-version = "0.0.0"
+version = "1.0.0"
 description = "Pelican plugin that creates internationalized sub-sites for the default site"
 authors = [{name = "Ondrej Grover", email = "ondrej.grover@gmail.com"}, {name = "Frederik Elwert", email = "frederik.elwert@web.de"}]
 license = {text = "AGPL-3.0"}
